@@ -1,31 +1,30 @@
 "use client";
 
-import { Building2, Home, Layers, CheckCircle, Award } from "lucide-react";
+import { Home, Layers, Sun, CheckCircle, Clock } from "lucide-react";
 
-const COMMERCIAL_SERVICES = [
-  "Office & Corporate Interiors",
-  "Retail & Restaurant Build-outs",
-  "Warehouse & Industrial Facilities",
-  "Multi-family & HOA Properties",
-  "New Construction Painting",
-  "Parking Structures & Garages",
+const SIDING_SERVICES = [
+  "Mobile Home Vinyl Siding Replacement",
+  "Aluminum to Vinyl Conversion",
+  "Fascia & Soffit Installation",
+  "Exterior Repair & Restoration",
+  "Skirting & Trim",
+  "Window Replacement",
 ];
 
-const RESIDENTIAL_SERVICES = [
-  "Interior Room Painting",
-  "Exterior Siding & Trim",
-  "Deck & Fence Staining",
-  "Cabinet Refinishing",
-  "Popcorn Ceiling Removal",
-  "Color Consultation Included",
+const OUTDOOR_SERVICES = [
+  "Sunroom Design & Build",
+  "Screened Rooms & Enclosures",
+  "Pool Enclosures",
+  "Carports & Patio Covers",
+  "Aluminum Frame Structures",
 ];
 
-const SPECIALTY_SERVICES = [
-  "Epoxy Floor Coatings",
-  "Anti-Graffiti Coatings",
-  "Elastomeric Roof Coatings",
-  "Industrial Protective Coatings",
-  "Lead-Safe Certified Work",
+const FLORIDA_READY = [
+  "Wind & moisture-resistant systems",
+  "Florida building code compliant",
+  "Materials rated for Florida climate",
+  "Low-maintenance vinyl panels",
+  "Custom color matching available",
 ];
 
 export default function Services() {
@@ -92,7 +91,7 @@ export default function Services() {
               textAlign: "right",
             }}
           >
-            Full-service painting contractor for commercial projects of any scale and residential work that transforms your home.
+            Specializing in the exterior needs of manufactured and mobile homes throughout Tampa Bay — from siding to sunrooms.
           </p>
         </div>
 
@@ -108,7 +107,7 @@ export default function Services() {
             border: "1px solid rgba(255,255,255,0.06)",
           }}
         >
-          {/* Card 1 — Commercial (spans 2 rows) */}
+          {/* Card 1 — Siding & Exterior (spans 2 rows) */}
           <div
             style={{
               gridRow: "span 2",
@@ -135,7 +134,6 @@ export default function Services() {
               01
             </span>
 
-            {/* Icon */}
             <div
               style={{
                 display: "inline-flex",
@@ -148,7 +146,7 @@ export default function Services() {
                 color: "#E8843A",
               }}
             >
-              <Building2 size={22} strokeWidth={1.75} />
+              <Home size={22} strokeWidth={1.75} />
             </div>
 
             <p
@@ -161,7 +159,7 @@ export default function Services() {
                 marginBottom: "0.5rem",
               }}
             >
-              Category
+              Core Service
             </p>
             <h3
               style={{
@@ -173,10 +171,9 @@ export default function Services() {
                 marginBottom: "1.25rem",
               }}
             >
-              Commercial Painting
+              Siding &amp; Exterior Work
             </h3>
 
-            {/* HR Accent */}
             <div
               style={{
                 width: "40px",
@@ -186,9 +183,8 @@ export default function Services() {
               }}
             />
 
-            {/* Service List */}
-            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.65rem", marginBottom: "2.5rem" }}>
-              {COMMERCIAL_SERVICES.map((item) => (
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.65rem", marginBottom: "2rem" }}>
+              {SIDING_SERVICES.map((item) => (
                 <li
                   key={item}
                   style={{
@@ -205,6 +201,25 @@ export default function Services() {
                 </li>
               ))}
             </ul>
+
+            {/* Quick turnaround callout */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.6rem",
+                background: "rgba(232,132,58,0.1)",
+                border: "1px solid rgba(232,132,58,0.25)",
+                borderLeft: "3px solid #E8843A",
+                padding: "0.75rem 1rem",
+                marginBottom: "2rem",
+              }}
+            >
+              <Clock size={16} strokeWidth={2} style={{ color: "#E8843A", flexShrink: 0 }} />
+              <span style={{ fontSize: "0.8rem", color: "#D4D4D4", lineHeight: 1.5 }}>
+                Most siding projects are completed <strong style={{ color: "#FFFFFF" }}>in about one week</strong>.
+              </span>
+            </div>
 
             <a
               href="#contact"
@@ -230,11 +245,11 @@ export default function Services() {
                 e.currentTarget.style.borderColor = "rgba(232,132,58,0.4)";
               }}
             >
-              Request a Quote &rarr;
+              Get a Free Estimate &rarr;
             </a>
           </div>
 
-          {/* Card 2 — Residential */}
+          {/* Card 2 — Outdoor Living */}
           <div
             style={{
               background: "#202020",
@@ -271,7 +286,7 @@ export default function Services() {
                 color: "#E8843A",
               }}
             >
-              <Home size={20} strokeWidth={1.75} />
+              <Sun size={20} strokeWidth={1.75} />
             </div>
 
             <p
@@ -284,7 +299,7 @@ export default function Services() {
                 marginBottom: "0.4rem",
               }}
             >
-              Category
+              Outdoor Living
             </p>
             <h3
               style={{
@@ -296,11 +311,11 @@ export default function Services() {
                 marginBottom: "1.25rem",
               }}
             >
-              Residential Painting
+              Sunrooms &amp; Screen Rooms
             </h3>
 
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.55rem", marginBottom: "1rem" }}>
-              {RESIDENTIAL_SERVICES.map((item) => (
+              {OUTDOOR_SERVICES.map((item) => (
                 <li
                   key={item}
                   style={{
@@ -325,11 +340,11 @@ export default function Services() {
                 marginTop: "0.75rem",
               }}
             >
-              Serving single-family homes, condos, and estates throughout Austin and surrounding communities.
+              Designed and built from start to finish — we handle permitting, framing, and final inspection.
             </p>
           </div>
 
-          {/* Card 3 — Specialty */}
+          {/* Card 3 — Florida-Ready Materials */}
           <div
             style={{
               background: "#1e2232",
@@ -379,7 +394,7 @@ export default function Services() {
                 marginBottom: "0.4rem",
               }}
             >
-              Specialty
+              Florida-Ready
             </p>
             <h3
               style={{
@@ -391,11 +406,11 @@ export default function Services() {
                 marginBottom: "1.25rem",
               }}
             >
-              Specialty Coatings
+              Built for Florida Weather
             </h3>
 
             <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.55rem", marginBottom: "1.5rem" }}>
-              {SPECIALTY_SERVICES.map((item) => (
+              {FLORIDA_READY.map((item) => (
                 <li
                   key={item}
                   style={{
@@ -412,7 +427,6 @@ export default function Services() {
               ))}
             </ul>
 
-            {/* Badge */}
             <div
               style={{
                 display: "inline-flex",
@@ -428,8 +442,7 @@ export default function Services() {
                 textTransform: "uppercase",
               }}
             >
-              <Award size={13} strokeWidth={2} />
-              Sherwin-Williams Certified
+              Mobile Home Specialists
             </div>
           </div>
         </div>

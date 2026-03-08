@@ -1,51 +1,72 @@
 "use client";
 
-import { Shield, Award, Zap, Star, ExternalLink } from "lucide-react";
+import { Shield, Phone, MapPin } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
+  { label: "Areas", href: "#areas" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
 const SERVICE_LINKS = [
-  "Commercial Painting",
-  "Residential Painting",
-  "Epoxy Floor Coatings",
-  "Cabinet Refinishing",
-  "Specialty Coatings",
+  "Mobile Home Vinyl Siding",
+  "Exterior Repairs",
+  "Sunrooms & Screen Rooms",
+  "Carports & Patio Covers",
+  "Window Replacement",
+  "Skirting & Trim",
 ];
 
-const REVIEW_PLATFORMS = [
-  {
-    name: "BBB",
-    label: "Better Business Bureau",
-    rating: "A+",
-    detail: "Accredited since 2009",
-    color: "#0070A8",
-    href: "https://www.bbb.org",
-    stars: 5,
-  },
-  {
-    name: "AG",
-    label: "Angi (Angie's List)",
-    rating: "4.9",
-    detail: "Super Service Award 2023",
-    color: "#FF6B35",
-    href: "https://www.angi.com",
-    stars: 5,
-  },
-  {
-    name: "G",
-    label: "Google Reviews",
-    rating: "4.9",
-    detail: "140+ verified reviews",
-    color: "#4285F4",
-    href: "https://g.page",
-    stars: 5,
-  },
-];
+function FooterLogo() {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "0.75rem" }}>
+      <svg
+        width="44"
+        height="38"
+        viewBox="0 0 56 46"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        <polygon points="28,3 1,17 55,17" fill="#E8843A" />
+        <rect x="3" y="17" width="50" height="26" fill="#E8843A" fillOpacity="0.1" stroke="#E8843A" strokeWidth="1.5" />
+        <line x1="3" y1="22" x2="53" y2="22" stroke="#E8843A" strokeWidth="0.9" strokeOpacity="0.65" />
+        <line x1="3" y1="27" x2="53" y2="27" stroke="#E8843A" strokeWidth="0.9" strokeOpacity="0.65" />
+        <line x1="3" y1="32" x2="53" y2="32" stroke="#E8843A" strokeWidth="0.9" strokeOpacity="0.65" />
+        <line x1="3" y1="37" x2="53" y2="37" stroke="#E8843A" strokeWidth="0.9" strokeOpacity="0.65" />
+        <rect x="7" y="19" width="9" height="5" fill="#E8843A" fillOpacity="0.55" />
+        <rect x="40" y="19" width="9" height="5" fill="#E8843A" fillOpacity="0.55" />
+        <rect x="22" y="34" width="12" height="9" fill="#E8843A" fillOpacity="0.65" />
+      </svg>
+      <div>
+        <div
+          style={{
+            fontWeight: 900,
+            fontSize: "0.95rem",
+            letterSpacing: "-0.02em",
+            color: "#FFFFFF",
+            lineHeight: 1.2,
+          }}
+        >
+          RESTORING FLORIDA HOMES
+        </div>
+        <div
+          style={{
+            fontWeight: 600,
+            fontSize: "0.48rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "#E8843A",
+            marginTop: "2px",
+          }}
+        >
+          Siding &amp; Exterior Specialists
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -72,36 +93,7 @@ export default function Footer() {
         >
           {/* Col 1 — Brand */}
           <div>
-            <div
-              style={{
-                fontWeight: 900,
-                fontSize: "1.5rem",
-                letterSpacing: "-0.02em",
-                color: "#FFFFFF",
-                marginBottom: "0.5rem",
-              }}
-            >
-              APEX PAINTING CO.
-            </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "0.5rem",
-                marginBottom: "1rem",
-              }}
-            >
-              <Zap size={14} strokeWidth={2} style={{ color: "#E8843A" }} />
-              <span
-                style={{
-                  fontSize: "0.75rem",
-                  color: "#A3A3A3",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                Precision Coating, Lasting Impressions
-              </span>
-            </div>
+            <FooterLogo />
             <p
               style={{
                 fontSize: "0.85rem",
@@ -111,28 +103,41 @@ export default function Footer() {
                 maxWidth: "280px",
               }}
             >
-              Austin's trusted commercial and residential painting contractor since 2006. Licensed, insured, and Sherwin-Williams certified.
+              Tampa Bay&apos;s mobile home siding and exterior repair specialists. Family owned, BBB A+ rated, and serving the region for over 30 years.
             </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              {[
-                { icon: <Shield size={14} strokeWidth={2} />, text: "Licensed & Insured" },
-                { icon: <Award size={14} strokeWidth={2} />, text: "BBB Accredited A+" },
-                { icon: <Zap size={14} strokeWidth={2} />, text: "SW Certified Applicator" },
-              ].map((item) => (
-                <div
-                  key={item.text}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    fontSize: "0.8rem",
-                    color: "#A3A3A3",
-                  }}
-                >
-                  <span style={{ color: "#E8843A" }}>{item.icon}</span>
-                  {item.text}
-                </div>
-              ))}
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
+              <a
+                href="tel:+18132600046"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  fontSize: "0.85rem",
+                  color: "#A3A3A3",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = "#FFFFFF";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = "#A3A3A3";
+                }}
+              >
+                <Phone size={14} strokeWidth={2} style={{ color: "#E8843A" }} />
+                813-260-0046
+              </a>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "0.5rem",
+                  fontSize: "0.82rem",
+                  color: "#A3A3A3",
+                }}
+              >
+                <MapPin size={14} strokeWidth={2} style={{ color: "#E8843A", flexShrink: 0, marginTop: "2px" }} />
+                1100 N. 50th Street, Unit 4-I<br />Tampa, FL 33619
+              </div>
             </div>
           </div>
 
@@ -212,7 +217,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4 — Customer Reviews */}
+          {/* Col 4 — License & Credentials */}
           <div>
             <h4
               style={{
@@ -221,105 +226,62 @@ export default function Footer() {
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 color: "#A3A3A3",
-                marginBottom: "0.4rem",
+                marginBottom: "1.25rem",
               }}
             >
-              Customer Reviews
+              Credentials
             </h4>
-            <p
-              style={{
-                fontSize: "0.75rem",
-                color: "rgba(163,163,163,0.6)",
-                marginBottom: "1rem",
-              }}
-            >
-              Rated top contractor across platforms
-            </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.65rem" }}>
-              {REVIEW_PLATFORMS.map((platform) => (
-                <a
-                  key={platform.name}
-                  href={platform.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+              {[
+                { icon: <Shield size={14} strokeWidth={2} />, text: "Licensed General Contractor" },
+                { icon: <Shield size={14} strokeWidth={2} />, text: "CGC-1510334" },
+                { icon: <Shield size={14} strokeWidth={2} />, text: "BBB Accredited — A+" },
+                { icon: <Shield size={14} strokeWidth={2} />, text: "Fully Licensed & Insured" },
+                { icon: <Shield size={14} strokeWidth={2} />, text: "Family Owned & Operated" },
+              ].map((item) => (
+                <div
+                  key={item.text}
                   style={{
                     display: "flex",
                     alignItems: "center",
-                    gap: "0.75rem",
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    padding: "0.6rem 0.75rem",
-                    transition: "background 0.2s ease, border-color 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.07)";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "rgba(255,255,255,0.03)";
-                    e.currentTarget.style.borderColor = "rgba(255,255,255,0.06)";
+                    gap: "0.5rem",
+                    fontSize: "0.82rem",
+                    color: "#A3A3A3",
                   }}
                 >
-                  {/* Platform Badge */}
-                  <div
-                    style={{
-                      width: "32px",
-                      height: "32px",
-                      background: platform.color,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontWeight: 900,
-                      fontSize: "0.7rem",
-                      color: "#FFFFFF",
-                      flexShrink: 0,
-                      letterSpacing: "0",
-                    }}
-                  >
-                    {platform.name}
-                  </div>
-
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div
-                      style={{
-                        fontSize: "0.7rem",
-                        fontWeight: 700,
-                        color: "#FFFFFF",
-                        marginBottom: "0.15rem",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {platform.rating} &nbsp;
-                      {Array.from({ length: platform.stars }).map((_, i) => (
-                        <Star
-                          key={i}
-                          size={9}
-                          strokeWidth={0}
-                          fill="#F59E0B"
-                          style={{ display: "inline", verticalAlign: "middle" }}
-                        />
-                      ))}
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "0.65rem",
-                        color: "#A3A3A3",
-                        whiteSpace: "nowrap",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {platform.detail}
-                    </div>
-                  </div>
-
-                  <ExternalLink size={12} strokeWidth={2} style={{ color: "#A3A3A3", flexShrink: 0 }} />
-                </a>
+                  <span style={{ color: "#E8843A" }}>{item.icon}</span>
+                  {item.text}
+                </div>
               ))}
             </div>
+
+            {/* CTA */}
+            <a
+              href="#contact"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                marginTop: "1.5rem",
+                background: "#E8843A",
+                color: "#FFFFFF",
+                fontWeight: 700,
+                fontSize: "0.75rem",
+                letterSpacing: "0.06em",
+                textTransform: "uppercase",
+                padding: "0.6rem 1rem",
+                transition: "background 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#d4722e";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#E8843A";
+              }}
+            >
+              Free Estimate &rarr;
+            </a>
           </div>
         </div>
 
@@ -341,29 +303,16 @@ export default function Footer() {
               color: "rgba(163,163,163,0.6)",
             }}
           >
-            &copy; {currentYear} Apex Painting Co. All rights reserved. &nbsp;|&nbsp; TX License #TDLR-2006-4821
+            &copy; {currentYear} RFH Construction Consultants, Inc. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;State Certified General Contractor — CGC-1510334
           </p>
-          <div style={{ display: "flex", gap: "1.5rem" }}>
-            {["Privacy Policy", "Terms of Service"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                style={{
-                  fontSize: "0.75rem",
-                  color: "rgba(163,163,163,0.6)",
-                  transition: "color 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#A3A3A3";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "rgba(163,163,163,0.6)";
-                }}
-              >
-                {item}
-              </a>
-            ))}
-          </div>
+          <p
+            style={{
+              fontSize: "0.75rem",
+              color: "rgba(163,163,163,0.4)",
+            }}
+          >
+            Tampa Bay &amp; Central Florida
+          </p>
         </div>
       </div>
 

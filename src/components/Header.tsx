@@ -1,20 +1,77 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 
 const NAV_LINKS = [
   { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
+  { label: "Areas", href: "#areas" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
+function RFHLogo() {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
+      {/* Mobile home icon with siding lines */}
+      <svg
+        width="54"
+        height="44"
+        viewBox="0 0 56 46"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+      >
+        {/* Low-pitch roof — wide profile like a mobile home */}
+        <polygon points="28,3 1,17 55,17" fill="#E8843A" />
+        {/* Home body */}
+        <rect x="3" y="17" width="50" height="26" fill="#E8843A" fillOpacity="0.1" stroke="#E8843A" strokeWidth="1.5" />
+        {/* Horizontal siding lines */}
+        <line x1="3" y1="22" x2="53" y2="22" stroke="#E8843A" strokeWidth="0.9" strokeOpacity="0.65" />
+        <line x1="3" y1="27" x2="53" y2="27" stroke="#E8843A" strokeWidth="0.9" strokeOpacity="0.65" />
+        <line x1="3" y1="32" x2="53" y2="32" stroke="#E8843A" strokeWidth="0.9" strokeOpacity="0.65" />
+        <line x1="3" y1="37" x2="53" y2="37" stroke="#E8843A" strokeWidth="0.9" strokeOpacity="0.65" />
+        {/* Left window */}
+        <rect x="7" y="19" width="9" height="5" fill="#E8843A" fillOpacity="0.55" />
+        {/* Right window */}
+        <rect x="40" y="19" width="9" height="5" fill="#E8843A" fillOpacity="0.55" />
+        {/* Door */}
+        <rect x="22" y="34" width="12" height="9" fill="#E8843A" fillOpacity="0.65" />
+      </svg>
+
+      {/* Text stack */}
+      <div style={{ lineHeight: 1 }}>
+        <div
+          style={{
+            fontWeight: 900,
+            fontSize: "1rem",
+            letterSpacing: "-0.02em",
+            color: "#FFFFFF",
+            lineHeight: 1.2,
+          }}
+        >
+          RESTORING FLORIDA HOMES
+        </div>
+        <div
+          style={{
+            fontWeight: 600,
+            fontSize: "0.5rem",
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "#E8843A",
+            marginTop: "3px",
+          }}
+        >
+          Siding &amp; Exterior Specialists
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -55,14 +112,7 @@ export default function Header() {
       >
         {/* Logo */}
         <a href="#" style={{ display: "flex", alignItems: "center", height: "100%" }}>
-          <Image
-            src="/logo.png"
-            alt="Apex Painting Co."
-            width={180}
-            height={56}
-            priority
-            style={{ objectFit: "contain", height: "56px", width: "auto" }}
-          />
+          <RFHLogo />
         </a>
 
         {/* Desktop Nav */}
@@ -75,21 +125,43 @@ export default function Header() {
                 fontSize: "0.875rem",
                 fontWeight: 500,
                 letterSpacing: "0.03em",
-                color: hoveredLink === link.href ? "#FFFFFF" : "#A3A3A3",
+                color: "#A3A3A3",
                 transition: "color 0.2s ease",
               }}
               onMouseEnter={(e) => {
-                setHoveredLink(link.href);
                 e.currentTarget.style.color = "#FFFFFF";
               }}
               onMouseLeave={(e) => {
-                setHoveredLink(null);
                 e.currentTarget.style.color = "#A3A3A3";
               }}
             >
               {link.label}
             </a>
           ))}
+
+          {/* Phone number */}
+          <a
+            href="tel:+18132600046"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.4rem",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              color: "#A3A3A3",
+              transition: "color 0.2s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = "#FFFFFF";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = "#A3A3A3";
+            }}
+          >
+            <Phone size={14} strokeWidth={2} />
+            813-260-0046
+          </a>
+
           <a
             href="#contact"
             style={{
@@ -110,7 +182,7 @@ export default function Header() {
               e.currentTarget.style.background = "#E8843A";
             }}
           >
-            Get a Quote
+            Free Estimate
           </a>
         </nav>
 
@@ -136,7 +208,7 @@ export default function Header() {
       <div
         className="mobile-drawer"
         style={{
-          maxHeight: menuOpen ? "300px" : "0px",
+          maxHeight: menuOpen ? "360px" : "0px",
           overflow: "hidden",
           transition: "max-height 0.35s ease",
           background: "rgba(22,22,22,0.98)",
@@ -175,6 +247,22 @@ export default function Header() {
             </a>
           ))}
           <a
+            href="tel:+18132600046"
+            style={{
+              fontSize: "1rem",
+              fontWeight: 600,
+              color: "#E8843A",
+              padding: "0.75rem 0",
+              borderBottom: "1px solid rgba(255,255,255,0.06)",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+            }}
+          >
+            <Phone size={16} strokeWidth={2} />
+            813-260-0046
+          </a>
+          <a
             href="#contact"
             onClick={() => setMenuOpen(false)}
             style={{
@@ -188,13 +276,13 @@ export default function Header() {
               transition: "background 0.2s ease",
             }}
           >
-            Get a Quote
+            Free Estimate
           </a>
         </nav>
       </div>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
           .desktop-nav {
             display: none !important;
           }

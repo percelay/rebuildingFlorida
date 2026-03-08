@@ -15,13 +15,13 @@ export default function Hero() {
       {/* Hero Background Image */}
       <Image
         src="/hero.jpg"
-        alt="Professional painting project"
+        alt="Mobile home siding replacement in Tampa Bay"
         fill
         priority
         quality={95}
         style={{
           objectFit: "cover",
-          objectPosition: "center 38%",
+          objectPosition: "center 40%",
         }}
       />
 
@@ -32,8 +32,8 @@ export default function Hero() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: "42%",
-          background: "linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 100%)",
+          height: "45%",
+          background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%)",
           pointerEvents: "none",
         }}
       />
@@ -46,7 +46,7 @@ export default function Hero() {
           left: 0,
           width: "70%",
           height: "65%",
-          background: "linear-gradient(to top right, rgba(0,0,0,0.45) 0%, transparent 100%)",
+          background: "linear-gradient(to top right, rgba(0,0,0,0.48) 0%, transparent 100%)",
           pointerEvents: "none",
         }}
       />
@@ -57,7 +57,7 @@ export default function Hero() {
           position: "absolute",
           bottom: "4rem",
           left: "1.5rem",
-          maxWidth: "clamp(300px, 55vw, 680px)",
+          maxWidth: "clamp(300px, 58vw, 700px)",
         }}
       >
         {/* Label */}
@@ -79,7 +79,7 @@ export default function Hero() {
               color: "#E8843A",
             }}
           >
-            Austin, Texas
+            Tampa Bay &amp; Central Florida
           </span>
         </div>
 
@@ -87,15 +87,15 @@ export default function Hero() {
         <h1
           style={{
             fontWeight: 900,
-            fontSize: "clamp(1.75rem, 4vw, 2.75rem)",
-            lineHeight: 1,
+            fontSize: "clamp(1.75rem, 4.5vw, 3rem)",
+            lineHeight: 1.05,
             letterSpacing: "-0.02em",
             color: "#FFFFFF",
             textShadow: "0 2px 8px rgba(0,0,0,0.9)",
             marginBottom: "1rem",
           }}
         >
-          Precision Coating.<br />Lasting Impressions.
+          Mobile Home Exteriors<br />Done Right. Built to Last.
         </h1>
 
         {/* Subheading */}
@@ -104,12 +104,13 @@ export default function Hero() {
             fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)",
             fontWeight: 400,
             lineHeight: 1.7,
-            color: "rgba(255,255,255,0.75)",
+            color: "rgba(255,255,255,0.78)",
             marginBottom: "1.5rem",
-            maxWidth: "480px",
+            maxWidth: "500px",
           }}
         >
-          Commercial and residential painting you can trust — on time, on budget, and built to last. Serving Austin and the surrounding area since 2006.
+          Siding replacement, exterior repairs, screen rooms, and carports — built
+          specifically for Florida-style manufactured homes. Serving Tampa Bay communities for over 30 years.
         </p>
 
         {/* Trust Badges */}
@@ -122,9 +123,9 @@ export default function Hero() {
           }}
         >
           {[
-            { icon: <ShieldCheck size={13} strokeWidth={2} />, label: "Licensed & Insured" },
-            { icon: <Star size={13} strokeWidth={2} />, label: "4.9★ Avg Rating" },
-            { icon: <Award size={13} strokeWidth={2} />, label: "SW Certified Applicator" },
+            { icon: <ShieldCheck size={13} strokeWidth={2} />, label: "BBB A+ Rated" },
+            { icon: <Star size={13} strokeWidth={2} />, label: "Family Owned & Operated" },
+            { icon: <Award size={13} strokeWidth={2} />, label: "Licensed General Contractor" },
           ].map((badge) => (
             <div
               key={badge.label}
@@ -173,10 +174,10 @@ export default function Hero() {
               e.currentTarget.style.background = "#E8843A";
             }}
           >
-            Request a Quote
+            Get a Free Estimate
           </a>
           <a
-            href="#services"
+            href="tel:+18132600046"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -200,9 +201,21 @@ export default function Hero() {
               e.currentTarget.style.background = "transparent";
             }}
           >
-            Our Services
+            Call 813-260-0046
           </a>
         </div>
+
+        {/* Quick note */}
+        <p
+          style={{
+            marginTop: "1.25rem",
+            fontSize: "0.75rem",
+            color: "rgba(255,255,255,0.5)",
+            letterSpacing: "0.02em",
+          }}
+        >
+          Most siding projects completed in about one week.
+        </p>
       </div>
     </section>
   );

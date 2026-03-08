@@ -6,13 +6,14 @@ import { Phone, Mail, MapPin, Shield, CheckCircle, Loader } from "lucide-react";
 type FormStatus = "idle" | "sending" | "success" | "error";
 
 const PROJECT_TYPES = [
-  "Commercial Interior Painting",
-  "Commercial Exterior Painting",
-  "Residential Interior Painting",
-  "Residential Exterior Painting",
-  "Cabinet Refinishing",
-  "Epoxy Floor Coating",
-  "Specialty / Industrial Coating",
+  "Mobile Home Vinyl Siding Replacement",
+  "Exterior Repairs",
+  "Window Replacement",
+  "Carports & Patio Covers",
+  "Sunrooms & Screen Rooms",
+  "Pool Enclosures",
+  "Skirting & Trim",
+  "Fascia & Soffit",
   "Other / Not Sure",
 ];
 
@@ -121,7 +122,7 @@ export default function Contact() {
               color: "#FFFFFF",
             }}
           >
-            REQUEST A QUOTE
+            REQUEST A FREE ESTIMATE
           </h2>
         </div>
 
@@ -144,7 +145,7 @@ export default function Contact() {
                 marginBottom: "2rem",
               }}
             >
-              Ready to get started? Fill out the form and we'll get back to you within one business day with a detailed, no-obligation quote.
+              If your mobile home needs siding replacement or exterior repairs, we&apos;d be happy to take a look. Fill out the form or give us a call — we&apos;ll get back to you promptly.
             </p>
 
             {/* Contact Info */}
@@ -153,20 +154,20 @@ export default function Contact() {
                 {
                   icon: <Phone size={18} strokeWidth={1.75} />,
                   label: "Phone",
-                  value: "(512) 847-2301",
-                  href: "tel:+15128472301",
+                  value: "813-260-0046",
+                  href: "tel:+18132600046",
                 },
                 {
                   icon: <Mail size={18} strokeWidth={1.75} />,
                   label: "Email",
-                  value: "info@apexpainting.co",
-                  href: "mailto:info@apexpainting.co",
+                  value: "info@restoringfloridahomes.com",
+                  href: "mailto:info@restoringfloridahomes.com",
                 },
                 {
                   icon: <MapPin size={18} strokeWidth={1.75} />,
                   label: "Address",
-                  value: "4821 Industrial Pkwy, Suite 200\nAustin, TX 78741",
-                  href: "https://maps.google.com/?q=4821+Industrial+Pkwy+Austin+TX",
+                  value: "1100 N. 50th Street, Unit 4-I\nTampa, FL 33619",
+                  href: "https://maps.google.com/?q=1100+N+50th+Street+Tampa+FL+33619",
                 },
               ].map((item) => (
                 <div
@@ -259,10 +260,10 @@ export default function Contact() {
               </div>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
                 {[
-                  "Free, detailed written estimates",
-                  "No hidden fees or surprise charges",
-                  "Licensed, bonded & insured",
-                  "Satisfaction guarantee in writing",
+                  "Free, no-obligation estimates",
+                  "Mobile home exterior specialists",
+                  "Licensed & insured — CGC-1510334",
+                  "BBB A+ rated — family owned",
                 ].map((item) => (
                   <li
                     key={item}
@@ -312,7 +313,7 @@ export default function Contact() {
                   Message Received
                 </h3>
                 <p style={{ fontSize: "0.9rem", lineHeight: 1.7, color: "#A3A3A3", maxWidth: "320px" }}>
-                  Thanks for reaching out! We'll review your request and get back to you within one business day.
+                  Thanks for reaching out. We&apos;ll review your request and get back to you shortly — usually same or next business day.
                 </p>
               </div>
             ) : (
@@ -347,7 +348,7 @@ export default function Contact() {
                       type="text"
                       name="name"
                       required
-                      placeholder="John Smith"
+                      placeholder="Jane Smith"
                       value={form.name}
                       onChange={handleChange}
                       onFocus={handleFocus}
@@ -372,7 +373,7 @@ export default function Contact() {
                     <input
                       type="tel"
                       name="phone"
-                      placeholder="(512) 555-0000"
+                      placeholder="(813) 555-0000"
                       value={form.phone}
                       onChange={handleChange}
                       onFocus={handleFocus}
@@ -401,7 +402,7 @@ export default function Contact() {
                     type="email"
                     name="email"
                     required
-                    placeholder="john@example.com"
+                    placeholder="jane@example.com"
                     value={form.email}
                     onChange={handleChange}
                     onFocus={handleFocus}
@@ -423,7 +424,7 @@ export default function Contact() {
                       marginBottom: "0.4rem",
                     }}
                   >
-                    Project Type
+                    Type of Work
                   </label>
                   <select
                     name="projectType"
@@ -457,13 +458,13 @@ export default function Contact() {
                       marginBottom: "0.4rem",
                     }}
                   >
-                    Project Details *
+                    Description of Work *
                   </label>
                   <textarea
                     name="message"
                     required
                     rows={5}
-                    placeholder="Tell us about your project — square footage, timeline, any special requirements..."
+                    placeholder="Describe what you need — home address, current siding condition, timeline, or anything else that helps us prepare..."
                     value={form.message}
                     onChange={handleChange}
                     onFocus={handleFocus}
@@ -527,7 +528,7 @@ export default function Contact() {
                       Sending...
                     </>
                   ) : (
-                    "Send My Request"
+                    "Submit Request"
                   )}
                 </button>
               </form>

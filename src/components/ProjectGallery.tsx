@@ -1,104 +1,33 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { ExternalLink } from "lucide-react";
-import Modal from "./Modal";
+import { MapPin, CheckCircle } from "lucide-react";
 
-interface Project {
-  id: number;
-  title: string;
-  category: string;
-  image: string;
-  description: string;
-  details: string[];
-  featured?: boolean;
-}
+const SERVICE_AREAS = [
+  { city: "Tampa", county: "Hillsborough County" },
+  { city: "Clearwater", county: "Pinellas County" },
+  { city: "St. Petersburg", county: "Pinellas County" },
+  { city: "Lakeland", county: "Polk County" },
+  { city: "Bradenton", county: "Manatee County" },
+  { city: "Riverview", county: "Hillsborough County" },
+  { city: "Sarasota", county: "Sarasota County" },
+  { city: "Zephyrhills", county: "Pasco County" },
+  { city: "New Port Richey", county: "Pasco County" },
+  { city: "Sun City Center", county: "Hillsborough County" },
+];
 
-const PROJECTS: Project[] = [
-  {
-    id: 1,
-    title: "Downtown Austin Office Tower",
-    category: "Commercial Interior",
-    image: "/projects/project-1.jpg",
-    description:
-      "Full interior repaint of a 12-story office tower including common areas, tenant suites, stairwells, and parking structure. Completed over 6 weekends with zero disruption to weekday operations.",
-    details: [
-      "45,000 sq ft total coverage",
-      "Sherwin-Williams Emerald commercial-grade paint",
-      "Low-VOC formula required by building management",
-      "Completed in 6 weekend phases",
-      "Custom accent walls throughout executive floors",
-    ],
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Lakeway Estate Exterior",
-    category: "Residential Exterior",
-    image: "/projects/project-2.jpg",
-    description: "Full exterior repaint of a 4,800 sq ft luxury estate including stucco body, wood trim, fascia, and wraparound porch.",
-    details: [
-      "Stucco body with elastomeric coating",
-      "Cedar trim hand-brushed for adhesion",
-      "3-color scheme custom-matched",
-    ],
-  },
-  {
-    id: 3,
-    title: "Mueller District Retail Strip",
-    category: "Commercial Exterior",
-    image: "/projects/project-3.jpg",
-    description: "Exterior repaint for a 6-unit retail strip mall in Austin's Mueller district, coordinated with property management.",
-    details: [
-      "6 storefronts, unified color palette",
-      "Anti-graffiti topcoat applied",
-      "Completed over one long weekend",
-    ],
-  },
-  {
-    id: 4,
-    title: "South Lamar Kitchen Cabinets",
-    category: "Cabinet Refinishing",
-    image: "/projects/project-4.jpg",
-    description: "Full cabinet refinishing for a modern kitchen — deglossed, primed, and sprayed with factory-smooth lacquer finish.",
-    details: [
-      "42 cabinet doors refinished",
-      "Factory-smooth lacquer spray finish",
-      "Benjamin Moore Advance enamel",
-    ],
-  },
-  {
-    id: 5,
-    title: "Cedar Park Epoxy Garage",
-    category: "Specialty Coating",
-    image: "/projects/project-5.jpg",
-    description: "Full 3-car garage epoxy floor system — diamond-ground substrate, moisture barrier, broadcast flake, and polyurea topcoat.",
-    details: [
-      "Diamond grinding surface prep",
-      "Moisture vapor barrier applied",
-      "Decorative flake broadcast",
-      "Polyurea topcoat for UV stability",
-    ],
-  },
+const COUNTIES = [
+  "Hillsborough County",
+  "Pinellas County",
+  "Pasco County",
+  "Polk County",
+  "Manatee County",
+  "Sarasota County",
 ];
 
 export default function ProjectGallery() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [hoveredId, setHoveredId] = useState<number | null>(null);
-
-  const featured = PROJECTS.find((p) => p.featured)!;
-  const rest = PROJECTS.filter((p) => !p.featured);
-
-  const openModal = (project: Project) => {
-    setSelectedProject(project);
-    setModalOpen(true);
-  };
-
   return (
     <section
-      id="projects"
+      id="areas"
       style={{
         background: "#1c1c1c",
         padding: "6rem 1.5rem",
@@ -135,7 +64,7 @@ export default function ProjectGallery() {
                   color: "#E8843A",
                 }}
               >
-                Our Work
+                Service Coverage
               </span>
             </div>
             <h2
@@ -147,7 +76,7 @@ export default function ProjectGallery() {
                 color: "#FFFFFF",
               }}
             >
-              PROJECTS
+              WHERE WE WORK
             </h2>
           </div>
           <p
@@ -159,13 +88,13 @@ export default function ProjectGallery() {
               textAlign: "right",
             }}
           >
-            A selection of recent commercial and residential work across Austin and surrounding areas.
+            We regularly work in mobile home parks and communities across Tampa Bay and Central Florida.
           </p>
         </div>
 
         {/* Bento Grid */}
         <div
-          className="gallery-grid"
+          className="areas-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
@@ -174,344 +103,268 @@ export default function ProjectGallery() {
             backgroundColor: "rgba(255,255,255,0.06)",
           }}
         >
-          {/* Featured card */}
+          {/* Featured card — Full Coverage */}
           <div
             style={{
               gridColumn: "span 2",
               gridRow: "span 2",
+              background: "#1a1a1a",
+              padding: "2.5rem",
               position: "relative",
               overflow: "hidden",
-              background: "#242424",
-              cursor: "pointer",
-            }}
-            onClick={() => openModal(featured)}
-            onMouseEnter={(e) => {
-              setHoveredId(featured.id);
-              const img = e.currentTarget.querySelector("img");
-              if (img) img.style.transform = "scale(1.04)";
-            }}
-            onMouseLeave={(e) => {
-              setHoveredId(null);
-              const img = e.currentTarget.querySelector("img");
-              if (img) img.style.transform = "scale(1)";
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
             }}
           >
-            <Image
-              src={featured.image}
-              alt={featured.title}
-              fill
-              style={{
-                objectFit: "cover",
-                transition: "transform 0.35s ease",
-              }}
-            />
-            <div
+            {/* Background watermark */}
+            <span
               style={{
                 position: "absolute",
-                bottom: 0,
-                left: 0,
-                right: 0,
-                height: "55%",
-                background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%)",
+                bottom: "-1rem",
+                right: "-0.5rem",
+                fontSize: "12rem",
+                fontWeight: 900,
+                color: "rgba(232,132,58,0.04)",
+                lineHeight: 1,
                 pointerEvents: "none",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                bottom: "1.5rem",
-                left: "1.5rem",
-                right: "1.5rem",
+                userSelect: "none",
               }}
             >
-              <span
-                style={{
-                  display: "inline-block",
-                  fontSize: "0.65rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  color: "#E8843A",
-                  background: "rgba(232,132,58,0.15)",
-                  border: "1px solid rgba(232,132,58,0.3)",
-                  padding: "0.2rem 0.5rem",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {featured.category}
-              </span>
-              <h3
-                style={{
-                  fontWeight: 900,
-                  fontSize: "1.5rem",
-                  letterSpacing: "-0.02em",
-                  lineHeight: 1.1,
-                  color: "#FFFFFF",
-                  marginBottom: "0.75rem",
-                }}
-              >
-                {featured.title}
-              </h3>
-              <button
+              FL
+            </span>
+
+            <div>
+              <div
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
-                  gap: "0.4rem",
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: "#FFFFFF",
-                  background: "#E8843A",
-                  border: "none",
-                  padding: "0.5rem 1rem",
-                  cursor: "pointer",
-                  transition: "background 0.2s ease",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "#d4722e";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "#E8843A";
-                }}
-              >
-                View Details
-                <ExternalLink size={12} strokeWidth={2} />
-              </button>
-            </div>
-          </div>
-
-          {/* Rest of cards */}
-          {rest.map((project) => (
-            <div
-              key={project.id}
-              style={{
-                position: "relative",
-                overflow: "hidden",
-                background: "#242424",
-                cursor: "default",
-              }}
-              onMouseEnter={(e) => {
-                setHoveredId(project.id);
-                const img = e.currentTarget.querySelector("img");
-                if (img) img.style.transform = "scale(1.06)";
-              }}
-              onMouseLeave={(e) => {
-                setHoveredId(null);
-                const img = e.currentTarget.querySelector("img");
-                if (img) img.style.transform = "scale(1)";
-              }}
-            >
-              <Image
-                src={project.image}
-                alt={project.title}
-                fill
-                style={{
-                  objectFit: "cover",
-                  transition: "transform 0.35s ease",
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: "65%",
-                  background: "linear-gradient(to top, rgba(0,0,0,0.82) 0%, transparent 100%)",
-                  pointerEvents: "none",
-                }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: "1rem",
-                  left: "1rem",
-                  right: "1rem",
-                }}
-              >
-                <span
-                  style={{
-                    display: "inline-block",
-                    fontSize: "0.6rem",
-                    fontWeight: 700,
-                    letterSpacing: "0.12em",
-                    textTransform: "uppercase",
-                    color: "#E8843A",
-                    background: "rgba(232,132,58,0.15)",
-                    border: "1px solid rgba(232,132,58,0.3)",
-                    padding: "0.15rem 0.4rem",
-                    marginBottom: "0.35rem",
-                  }}
-                >
-                  {project.category}
-                </span>
-                <h3
-                  style={{
-                    fontWeight: 700,
-                    fontSize: "0.95rem",
-                    letterSpacing: "-0.01em",
-                    lineHeight: 1.2,
-                    color: "#FFFFFF",
-                  }}
-                >
-                  {project.title}
-                </h3>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Project Detail Modal */}
-      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
-        {selectedProject && (
-          <div>
-            {/* Modal Image */}
-            <div style={{ position: "relative", height: "320px", background: "#111" }}>
-              <Image
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                fill
-                style={{ objectFit: "cover", opacity: 0.85 }}
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  height: "50%",
-                  background: "linear-gradient(to top, rgba(30,30,30,1) 0%, transparent 100%)",
-                }}
-              />
-            </div>
-
-            {/* Modal Content */}
-            <div style={{ padding: "2rem" }}>
-              <span
-                style={{
-                  display: "inline-block",
+                  gap: "0.5rem",
+                  background: "rgba(232,132,58,0.12)",
+                  border: "1px solid rgba(232,132,58,0.3)",
+                  padding: "0.3rem 0.75rem",
+                  marginBottom: "1.25rem",
                   fontSize: "0.65rem",
                   fontWeight: 700,
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
                   color: "#E8843A",
-                  background: "rgba(232,132,58,0.12)",
-                  border: "1px solid rgba(232,132,58,0.25)",
-                  padding: "0.2rem 0.5rem",
-                  marginBottom: "0.75rem",
                 }}
               >
-                {selectedProject.category}
-              </span>
-              <h2
+                <MapPin size={12} strokeWidth={2} />
+                Tampa Bay &amp; Central Florida
+              </div>
+
+              <h3
                 style={{
                   fontWeight: 900,
                   fontSize: "1.75rem",
                   letterSpacing: "-0.02em",
-                  lineHeight: 1,
+                  lineHeight: 1.1,
                   color: "#FFFFFF",
-                  marginBottom: "1rem",
+                  marginBottom: "0.75rem",
+                  maxWidth: "420px",
                 }}
               >
-                {selectedProject.title}
-              </h2>
+                Serving Mobile Home Communities Throughout the Region
+              </h3>
               <p
                 style={{
-                  fontSize: "0.9rem",
+                  fontSize: "0.875rem",
                   lineHeight: 1.7,
                   color: "#A3A3A3",
-                  marginBottom: "1.5rem",
+                  marginBottom: "2rem",
+                  maxWidth: "460px",
                 }}
               >
-                {selectedProject.description}
+                From Tampa to Sarasota, we&apos;ve worked in hundreds of mobile home parks and communities across the Tampa Bay area. If you&apos;re not sure we cover your area, give us a call — chances are we do.
               </p>
 
-              <div style={{ width: "32px", height: "2px", background: "#E8843A", marginBottom: "1.25rem" }} />
-
-              <h4
+              {/* City grid */}
+              <div
                 style={{
-                  fontSize: "0.75rem",
-                  fontWeight: 700,
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
-                  color: "#A3A3A3",
-                  marginBottom: "0.75rem",
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gap: "0.5rem 2rem",
+                  marginBottom: "2rem",
                 }}
               >
-                Project Details
-              </h4>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-                {selectedProject.details.map((detail) => (
-                  <li
-                    key={detail}
+                {SERVICE_AREAS.map((area) => (
+                  <div
+                    key={area.city}
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: "0.6rem",
-                      fontSize: "0.875rem",
+                      gap: "0.5rem",
+                      fontSize: "0.85rem",
                       color: "#D4D4D4",
                     }}
                   >
-                    <div
-                      style={{
-                        width: "6px",
-                        height: "6px",
-                        background: "#E8843A",
-                        flexShrink: 0,
-                      }}
-                    />
-                    {detail}
-                  </li>
+                    <div style={{ width: "4px", height: "4px", background: "#E8843A", flexShrink: 0 }} />
+                    {area.city}
+                  </div>
                 ))}
-              </ul>
-
-              <div style={{ marginTop: "2rem" }}>
-                <a
-                  href="#contact"
-                  onClick={() => setModalOpen(false)}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    background: "#E8843A",
-                    color: "#FFFFFF",
-                    fontWeight: 700,
-                    fontSize: "0.8rem",
-                    letterSpacing: "0.08em",
-                    textTransform: "uppercase",
-                    padding: "0.75rem 1.5rem",
-                    transition: "background 0.2s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "#d4722e";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "#E8843A";
-                  }}
-                >
-                  Request a Similar Project
-                </a>
               </div>
             </div>
+
+            <a
+              href="#contact"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "#E8843A",
+                color: "#FFFFFF",
+                fontWeight: 700,
+                fontSize: "0.8rem",
+                letterSpacing: "0.08em",
+                textTransform: "uppercase",
+                padding: "0.75rem 1.5rem",
+                width: "fit-content",
+                transition: "background 0.2s ease",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "#d4722e";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "#E8843A";
+              }}
+            >
+              Check Your Area &rarr;
+            </a>
           </div>
-        )}
-      </Modal>
+
+          {/* Card 2 — Counties Served */}
+          <div
+            style={{
+              background: "#202020",
+              padding: "2rem",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <span
+              style={{
+                position: "absolute",
+                top: "0.75rem",
+                right: "1rem",
+                fontSize: "5rem",
+                fontWeight: 900,
+                color: "rgba(255,255,255,0.03)",
+                lineHeight: 1,
+                pointerEvents: "none",
+                userSelect: "none",
+              }}
+            >
+              6
+            </span>
+
+            <p
+              style={{
+                fontSize: "0.65rem",
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                color: "#E8843A",
+                marginBottom: "0.4rem",
+              }}
+            >
+              Counties Covered
+            </p>
+            <h3
+              style={{
+                fontWeight: 900,
+                fontSize: "1.25rem",
+                letterSpacing: "-0.02em",
+                lineHeight: 1,
+                color: "#FFFFFF",
+                marginBottom: "1.25rem",
+              }}
+            >
+              Service Area
+            </h3>
+
+            <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.55rem" }}>
+              {COUNTIES.map((county) => (
+                <li
+                  key={county}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.6rem",
+                    fontSize: "0.82rem",
+                    color: "#A3A3A3",
+                  }}
+                >
+                  <CheckCircle size={13} strokeWidth={2} style={{ color: "#E8843A", flexShrink: 0 }} />
+                  {county}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Card 3 — Mobile Home Parks */}
+          <div
+            style={{
+              background: "#1e2232",
+              padding: "2rem",
+              position: "relative",
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <div
+              style={{
+                fontWeight: 900,
+                fontSize: "3.5rem",
+                letterSpacing: "-0.03em",
+                lineHeight: 1,
+                color: "#E8843A",
+                marginBottom: "0.5rem",
+              }}
+            >
+              30+
+            </div>
+            <p
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "#FFFFFF",
+                marginBottom: "0.75rem",
+              }}
+            >
+              Years Serving Tampa Bay
+            </p>
+            <p
+              style={{
+                fontSize: "0.8rem",
+                lineHeight: 1.6,
+                color: "#A3A3A3",
+              }}
+            >
+              We know Tampa Bay&apos;s mobile home communities because we&apos;ve been working in them for over three decades. No subcontractors — our own crew, every time.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <style>{`
         @media (max-width: 768px) {
-          .gallery-grid {
+          .areas-grid {
             grid-template-columns: 1fr !important;
             grid-template-rows: auto !important;
           }
-          .gallery-grid > div:first-child {
+          .areas-grid > div:first-child {
             grid-column: auto !important;
             grid-row: auto !important;
-            height: 300px;
+            min-height: 400px;
           }
-          .gallery-grid > div:not(:first-child) {
-            height: 220px;
+          .areas-grid > div:not(:first-child) {
+            min-height: 200px;
           }
         }
       `}</style>

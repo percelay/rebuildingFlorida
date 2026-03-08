@@ -9,24 +9,24 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://apexpainting.co"),
-  title: "Apex Painting Co. | Commercial & Residential Painting — Austin, TX",
+  metadataBase: new URL("https://restoringfloridahomes.com"),
+  title: "Restoring Florida Homes | Mobile Home Siding & Exterior Repair — Tampa Bay",
   description:
-    "Austin's trusted commercial and residential painting contractor. Licensed, insured, and Sherwin-Williams certified. Request a free quote today.",
+    "Tampa Bay's trusted mobile home siding and exterior repair specialists. Family-owned, BBB A+ rated, 30+ years experience. Vinyl siding, screen rooms, carports & more. Free estimates.",
   openGraph: {
-    title: "Apex Painting Co. | Commercial & Residential Painting",
+    title: "Restoring Florida Homes | Mobile Home Siding & Exterior Repair",
     description:
-      "Expert interior and exterior painting for commercial and residential clients across Austin, TX. 18+ years of experience.",
-    url: "https://apexpainting.co",
-    siteName: "Apex Painting Co.",
+      "Expert mobile home siding replacement, exterior repairs, screen rooms, and carports throughout Tampa Bay and Central Florida. 30+ years of experience.",
+    url: "https://restoringfloridahomes.com",
+    siteName: "Restoring Florida Homes",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Apex Painting Co. | Commercial & Residential Painting",
+    title: "Restoring Florida Homes | Mobile Home Siding & Exterior Repair",
     description:
-      "Expert interior and exterior painting for commercial and residential clients across Austin, TX.",
+      "Tampa Bay's mobile home exterior specialists. Vinyl siding, screen rooms, carports, window replacement & more. BBB A+ rated, 30+ years experience.",
   },
   icons: {
     icon: "/favicon.ico",
