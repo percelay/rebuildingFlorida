@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { CheckCircle, Shield, Quote } from "lucide-react";
 
 const STATS = [
@@ -147,6 +148,48 @@ export default function About() {
 
           {/* Right Column */}
           <div>
+            {/* Owner photo */}
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                aspectRatio: "4 / 3",
+                marginBottom: "1.5rem",
+                overflow: "hidden",
+                border: "1px solid rgba(255,255,255,0.07)",
+              }}
+            >
+              <Image
+                src="/projects/upscalemedia-transformed.jpeg"
+                alt="Robert Hoskinson — Owner, RFH Construction Consultants"
+                fill
+                style={{ objectFit: "cover", objectPosition: "center" }}
+              />
+              {/* Name caption */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: "0.75rem 1rem",
+                  background: "linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%)",
+                  display: "flex",
+                  alignItems: "flex-end",
+                  gap: "0.6rem",
+                }}
+              >
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: "0.875rem", color: "#FFFFFF", lineHeight: 1.2 }}>
+                    Robert Hoskinson
+                  </div>
+                  <div style={{ fontSize: "0.65rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#E8843A" }}>
+                    President &amp; General Contractor
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Stats Grid */}
             <div
               style={{
