@@ -14,7 +14,7 @@ export default function Hero() {
     >
       {/* Hero Background Image */}
       <Image
-        src="/projects/newnewnew.jpg"
+        src="/projects/newesthero.webp"
         alt="Mobile home siding replacement in Tampa Bay"
         fill
         priority
